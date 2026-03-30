@@ -93,8 +93,9 @@ final_output = w1 * model1 + w2 * model2 + ...
 내부 구조에 대한 이해는 부족한 상태
 
 ## 6. Result
+Public Leaderboard: 24 / 219 \
 Private Leaderboard: 12 / 219 (상위 5%)
-Public Leaderboard: 24 / 219
+
 
 ## 7. Key Insights
 ✔ Insight 1
