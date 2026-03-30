@@ -7,15 +7,12 @@
 
 단순 긍/부정이 아닌, **미세한 감성 차이를 구분하는 것이 핵심 과제**였습니다.
 
----
 
 ## 2. Problem
 
 - 4개 클래스 간 **데이터 불균형 존재**
 - 약한/강한 감성 간 **경계가 모호함**
 - 제한된 사전학습 모델만 사용 가능 (모델 선택 제약 존재)
-
----
 
 ## 3. Constraints
 
@@ -32,8 +29,6 @@
 
 👉 따라서 **제한된 모델 내에서 성능을 극대화하는 전략이 필요했습니다.**
 
----
-
 ## 4. Approach (Hypothesis)
 
 ### 가설 1  
@@ -44,8 +39,6 @@
 → 모델마다 서로 다른 error pattern을 가질 것이다  
 → Ensemble을 통해 성능을 개선할 수 있을 것이다  
 
----
-
 ## 5. Experiments
 
 ### 5.1 Data Analysis & Preprocessing
@@ -54,8 +47,6 @@
 - 감성에 영향을 주지 않는 단어를 추가로 제거 (불용어 확장)
 
 👉 결과: baseline 대비 소폭 성능 향상
-
----
 
 ### 5.2 Loss Function (Focal Loss)
 
@@ -67,14 +58,10 @@
 - 클래스 imbalance보다  
   **문맥 이해 부족이 더 큰 문제라고 판단**
 
----
-
 ### 5.3 Model Selection
 
 - 허용된 모델 내에서 성능 비교
 - 가장 성능이 높은 모델을 baseline으로 설정
-
----
 
 ### 5.4 Ensemble Strategy
 
@@ -82,24 +69,21 @@
 - weighted ensemble 적용
 
 ```python
-final_output = w1 * model1 + w2 * model2 + ...
+final_output = w1 * model1 + w2 * model2 + ... 
+```
 
 다양한 weight 조합 실험
 미세한 weight 변화(0.01 단위)에서도 성능 차이 발생 확인
 
 👉 결과: 단일 모델 대비 성능 크게 향상
 
----
-
 ### 5.5 K-Fold Cross Validation (실패 경험)
 모델 일반화 성능 향상을 위해 K-Fold 적용 시도
 하지만 학습 시간 증가 및 서버 자원 부족으로 인해 전체 실험 진행 실패
 
-👉 Insight:
+👉 Insight: 단순 성능 향상 기법보다 환경 제약을 고려한 실험 설계가 중요함을 체감
 
-단순 성능 향상 기법보다
-환경 제약을 고려한 실험 설계가 중요함을 체감
-5.6 TAPT (Task Adaptive Pretraining)
+### 5.6 TAPT (Task Adaptive Pretraining)
 도메인 적응을 위해 TAPT 적용
 
 👉 결과: 추가적인 성능 향상 확인
@@ -108,13 +92,9 @@ final_output = w1 * model1 + w2 * model2 + ...
 외부 코드를 활용하여 적용했으며,
 내부 구조에 대한 이해는 부족한 상태
 
----
-
 ## 6. Result
 Private Leaderboard: 12 / 219 (상위 5%)
 Public Leaderboard: 24 / 219
-
----
 
 ## 7. Key Insights
 ✔ Insight 1
@@ -144,13 +124,9 @@ K-Fold 실패 경험을 통해
 다양한 실험을 통해 가설 → 검증 → 해석 과정의 중요성 체감
 환경 제약 속에서도 최적의 전략을 찾는 경험 수행
 
----
-
 ## 9. Collaboration
 실험 결과를 팀원들과 공유하여 성능 개선에 기여
 경쟁보다 협업을 통해 더 나은 결과 도출
-
----
 
 ## 10. Tech Stack
 Python
