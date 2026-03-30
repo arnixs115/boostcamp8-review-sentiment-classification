@@ -82,7 +82,7 @@
 - weighted ensemble 적용
 
 ```python
-final_output = w1 * model1 + w2 * model2 + ...
+final_output = w1 * model1 + w2 * model2 + ...'''
 다양한 weight 조합 실험
 미세한 weight 변화(0.01 단위)에서도 성능 차이 발생 확인
 
@@ -104,7 +104,6 @@ final_output = w1 * model1 + w2 * model2 + ...
 👉 결과: 추가적인 성능 향상 확인
 
 👉 한계:
-
 외부 코드를 활용하여 적용했으며,
 내부 구조에 대한 이해는 부족한 상태
 
